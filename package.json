@@ -1,0 +1,25 @@
+{
+  "name": "my-cloudflare-services",
+  "version": "1.0.0",
+  "description": "Henry's daily services hosted on Cloudflare.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "NODE_ENV=development npm run build",
+    "format": "prettier --write '**/*.{ts,js,css,json,md}'",
+    "transpile": "tsc --project ./test"
+  },
+  "author": "Henry <henry1943@163.com>",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^1.0.1",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "service-worker-mock": "^2.0.3",
+    "source-map-loader": "^0.2.4",
+    "source-map-support": "^0.5.12",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
+  }
+}
