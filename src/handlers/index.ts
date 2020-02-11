@@ -14,3 +14,13 @@ export async function handleIndex(request: Request): Promise<Response> {
     { status: 200 }
   );
 }
+
+export async function handleStock(request: Request): Promise<Response> {
+  const result = await fetchStock(config.stock.symbol);
+  return new Response(JSON.stringify(result), { status: 200 });
+}
+
+export async function handleWeather(request: Request): Promise<Response> {
+  const result = await fetchWeatherForecast(config.weather.locationCode);
+  return new Response(JSON.stringify(result), { status: 200 });
+}
