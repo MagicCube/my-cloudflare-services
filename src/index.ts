@@ -1,4 +1,9 @@
-import { handleIndex, handleStock, handleWeather } from './handlers';
+import {
+  handleIndex,
+  handleStock,
+  handleWeatherForecast,
+  handleWeatherNow
+} from './handlers';
 
 import Router from './router';
 
@@ -10,7 +15,9 @@ async function handleRequest(request: Request) {
   const router = new Router();
   router.get('/', handleIndex);
   router.get('/stock', handleStock);
-  router.get('/weather', handleWeather);
+  router.get('/weather', handleWeatherNow);
+  router.get('/weather/now', handleWeatherNow);
+  router.get('/weather/forecast', handleWeatherForecast);
   let response = await router.route(request);
   if (!response) {
     response = new Response('Not found', { status: 404 });
