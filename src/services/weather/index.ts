@@ -16,10 +16,15 @@ export async function fetchWeatherForecast(locationCode: string) {
     const json = await res.json();
     const forecast = json.HeWeather6[0].daily_forecast.map(
       (raw: Record<string, any>) => ({
-        day: raw.cond_txt_d,
-        dayCode: translateWeatherCode(raw.cond_code_d),
-        night: raw.cond_txt_n,
-        nightCode: translateWeatherCode(raw.cond_code_n),
+        date: raw.date,
+        day: new Date(raw.date)
+          .toUTCString()
+          .substr(0, 3)
+          .toUpperCase(),
+        dayCond: raw.cond_txt_d,
+        dayCondCode: translateWeatherCode(raw.cond_code_d),
+        nightCond: raw.cond_txt_n,
+        nightCondCode: translateWeatherCode(raw.cond_code_n),
         highTemp: parseFloat(raw.tmp_max),
         lowTemp: parseFloat(raw.tmp_min)
       })
